@@ -1,0 +1,63 @@
+apiVersion: networking.internal.knative.dev/v1alpha1
+kind: Ingress
+metadata:
+  annotations:
+    networking.internal.knative.dev/rollout: '{"configurations":[{"configurationName":"hello-world","percent":100,"revisions":[{"revisionName":"hello-world-00001","percent":100}],"stepParams":{}}]}'
+    networking.knative.dev/ingress.class: istio.ingress.networking.knative.dev
+    serving.knative.dev/creator: kubernetes-admin
+    serving.knative.dev/lastModifier: kubernetes-admin
+  creationTimestamp: "2022-10-29T08:44:19Z"
+  finalizers:
+    - ingresses.networking.internal.knative.dev
+  generation: 1
+  labels:
+    serving.knative.dev/route: hello-world
+    serving.knative.dev/routeNamespace: demo
+    serving.knative.dev/service: hello-world
+  name: hello-world
+  namespace: demo
+  ownerReferences:
+    - apiVersion: serving.knative.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Route
+      name: hello-world
+      uid: bb0f31cf-0442-437d-b2a8-fa4234bf30d0
+  resourceVersion: "4172192"
+  uid: 974473f8-31f9-4563-98a7-97a70fe8a02d
+spec:
+  httpOption: Enabled
+  rules:
+    - hosts:
+        - hello-world.demo
+        - hello-world.demo.svc
+        - hello-world.demo.svc.cluster.local
+      http:
+        paths:
+          - splits:
+              - appendHeaders:
+                  Knative-Serving-Namespace: demo
+                  Knative-Serving-Revision: hello-world-00001
+                percent: 100
+                serviceName: hello-world-00001
+                serviceNamespace: demo
+                servicePort: 80
+      visibility: ClusterLocal
+status:
+  conditions:
+    - lastTransitionTime: "2022-10-29T08:44:19Z"
+      status: "True"
+      type: LoadBalancerReady
+    - lastTransitionTime: "2022-10-29T08:44:19Z"
+      status: "True"
+      type: NetworkConfigured
+    - lastTransitionTime: "2022-10-29T08:44:19Z"
+      status: "True"
+      type: Ready
+  observedGeneration: 1
+  privateLoadBalancer:
+    ingress:
+      - domainInternal: knative-local-gateway.istio-system.svc.cluster.local
+  publicLoadBalancer:
+    ingress:
+      - domainInternal: istio-ingressgateway.istio-system.svc.cluster.local

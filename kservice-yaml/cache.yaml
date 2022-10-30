@@ -1,0 +1,29 @@
+apiVersion: caching.internal.knative.dev/v1alpha1
+kind: Image
+metadata:
+  annotations:
+    serving.knative.dev/creator: kubernetes-admin
+  creationTimestamp: "2022-10-29T08:44:18Z"
+  generation: 1
+  labels:
+    app: hello-world-00001
+    serving.knative.dev/configuration: hello-world
+    serving.knative.dev/configurationGeneration: "1"
+    serving.knative.dev/configurationUID: da410292-d82b-4853-9f5e-f068c9a4a736
+    serving.knative.dev/revision: hello-world-00001
+    serving.knative.dev/revisionUID: 3b2cd2dc-42d7-4a62-9f58-50d704353013
+    serving.knative.dev/service: hello-world
+    serving.knative.dev/serviceUID: 9b8d4b55-a822-48f1-a29a-5e83bd3c79ea
+  name: hello-world-00001-cache-user-container
+  namespace: demo
+  ownerReferences:
+    - apiVersion: serving.knative.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Revision
+      name: hello-world-00001
+      uid: 3b2cd2dc-42d7-4a62-9f58-50d704353013
+  resourceVersion: "4172110"
+  uid: 14750484-ffb4-44a4-8e4c-3a3cf89a0a0a
+spec:
+  image: gcr.io/knative-samples/helloworld-go@sha256:5ea96ba4b872685ff4ddb5cd8d1a97ec18c18fae79ee8df0d29f446c5efe5f50

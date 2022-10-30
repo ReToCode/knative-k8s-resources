@@ -1,0 +1,153 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    serving.knative.dev/creator: kubernetes-admin
+    serving.knative.dev/lastModifier: kubernetes-admin
+  creationTimestamp: "2022-10-29T08:44:19Z"
+  labels:
+    serving.knative.dev/route: hello-world
+    serving.knative.dev/service: hello-world
+  name: hello-world
+  namespace: demo
+  ownerReferences:
+    - apiVersion: serving.knative.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Route
+      name: hello-world
+      uid: bb0f31cf-0442-437d-b2a8-fa4234bf30d0
+  resourceVersion: "4172193"
+  uid: b1d739c8-1a12-4bd5-b1cb-a509cda0340d
+spec:
+  externalName: knative-local-gateway.istio-system.svc.cluster.local
+  ports:
+    - name: http2
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  sessionAffinity: None
+  type: ExternalName
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    autoscaling.knative.dev/class: kpa.autoscaling.knative.dev
+    serving.knative.dev/creator: kubernetes-admin
+  creationTimestamp: "2022-10-29T08:44:18Z"
+  labels:
+    app: hello-world-00001
+    networking.internal.knative.dev/serverlessservice: hello-world-00001
+    networking.internal.knative.dev/serviceType: Public
+    serving.knative.dev/configuration: hello-world
+    serving.knative.dev/configurationGeneration: "1"
+    serving.knative.dev/configurationUID: da410292-d82b-4853-9f5e-f068c9a4a736
+    serving.knative.dev/revision: hello-world-00001
+    serving.knative.dev/revisionUID: 3b2cd2dc-42d7-4a62-9f58-50d704353013
+    serving.knative.dev/service: hello-world
+    serving.knative.dev/serviceUID: 9b8d4b55-a822-48f1-a29a-5e83bd3c79ea
+  name: hello-world-00001
+  namespace: demo
+  ownerReferences:
+    - apiVersion: networking.internal.knative.dev/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ServerlessService
+      name: hello-world-00001
+      uid: 239055fd-4872-49f1-9d16-8344a3f14609
+  resourceVersion: "4172132"
+  uid: 81bb9b99-7993-47be-a2ba-6aadc9728646
+spec:
+  clusterIP: 10.102.100.55
+  clusterIPs:
+    - 10.102.100.55
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8012
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8112
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    autoscaling.knative.dev/class: kpa.autoscaling.knative.dev
+    serving.knative.dev/creator: kubernetes-admin
+  creationTimestamp: "2022-10-29T08:44:18Z"
+  labels:
+    app: hello-world-00001
+    networking.internal.knative.dev/serverlessservice: hello-world-00001
+    networking.internal.knative.dev/serviceType: Private
+    serving.knative.dev/configuration: hello-world
+    serving.knative.dev/configurationGeneration: "1"
+    serving.knative.dev/configurationUID: da410292-d82b-4853-9f5e-f068c9a4a736
+    serving.knative.dev/revision: hello-world-00001
+    serving.knative.dev/revisionUID: 3b2cd2dc-42d7-4a62-9f58-50d704353013
+    serving.knative.dev/service: hello-world
+    serving.knative.dev/serviceUID: 9b8d4b55-a822-48f1-a29a-5e83bd3c79ea
+  name: hello-world-00001-private
+  namespace: demo
+  ownerReferences:
+    - apiVersion: networking.internal.knative.dev/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ServerlessService
+      name: hello-world-00001
+      uid: 239055fd-4872-49f1-9d16-8344a3f14609
+  resourceVersion: "4172122"
+  uid: d74894c4-56c8-4a8e-b443-d4fb29c71cd8
+spec:
+  clusterIP: 10.96.14.135
+  clusterIPs:
+    - 10.96.14.135
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8012
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8112
+    - name: http-autometric
+      port: 9090
+      protocol: TCP
+      targetPort: http-autometric
+    - name: http-usermetric
+      port: 9091
+      protocol: TCP
+      targetPort: http-usermetric
+    - name: http-queueadm
+      port: 8022
+      protocol: TCP
+      targetPort: 8022
+    - name: http-istio
+      port: 8012
+      protocol: TCP
+      targetPort: 8012
+  selector:
+    serving.knative.dev/revisionUID: 3b2cd2dc-42d7-4a62-9f58-50d704353013
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
+

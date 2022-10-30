@@ -1,0 +1,1678 @@
+--- cluster-created-ready.yaml	2022-10-29 10:44:43
++++ cluster-created-scaled-to-zero.yaml	2022-10-29 10:49:41
+@@ -328,11 +328,11 @@
+ kind: ConfigMap
+ metadata:
+   annotations:
+-    control-plane.alpha.kubernetes.io/leader: '{"holderIdentity":"ingress-nginx-controller-76548b646c-2gxvk","leaseDurationSeconds":30,"acquireTime":"2022-10-07T16:57:35Z","renewTime":"2022-10-29T08:44:35Z","leaderTransitions":1}'
++    control-plane.alpha.kubernetes.io/leader: '{"holderIdentity":"ingress-nginx-controller-76548b646c-2gxvk","leaseDurationSeconds":30,"acquireTime":"2022-10-07T16:57:35Z","renewTime":"2022-10-29T08:49:35Z","leaderTransitions":1}'
+   creationTimestamp: "2022-10-07T16:55:52Z"
+   name: ingress-controller-leader
+   namespace: ingress-nginx
+-  resourceVersion: "4172300"
++  resourceVersion: "4174342"
+   uid: 74b76b94-65e5-4a0d-bce4-db53e570eea3
+ ---
+ apiVersion: v1
+@@ -490,44 +490,44 @@
+ kind: ConfigMap
+ metadata:
+   annotations:
+-    control-plane.alpha.kubernetes.io/leader: '{"holderIdentity":"istiod-79597b775c-vbc6b","holderKey":"default","leaseDurationSeconds":30,"acquireTime":"2022-10-29T07:52:40Z","renewTime":"2022-10-29T08:44:35Z","leaderTransitions":2}'
++    control-plane.alpha.kubernetes.io/leader: '{"holderIdentity":"istiod-79597b775c-vbc6b","holderKey":"default","leaseDurationSeconds":30,"acquireTime":"2022-10-29T07:52:40Z","renewTime":"2022-10-29T08:49:36Z","leaderTransitions":2}'
+   creationTimestamp: "2022-09-26T05:49:07Z"
+   name: istio-gateway-deployment-leader
+   namespace: istio-system
+-  resourceVersion: "4172307"
++  resourceVersion: "4174349"
+   uid: 691b100a-fd64-4de4-bf83-b57bff05ac54
+ ---
+ apiVersion: v1
+ kind: ConfigMap
+ metadata:
+   annotations:
+-    control-plane.alpha.kubernetes.io/leader: '{"holderIdentity":"istiod-79597b775c-kvbm6","holderKey":"default","leaseDurationSeconds":30,"acquireTime":"2022-10-29T07:52:45Z","renewTime":"2022-10-29T08:44:39Z","leaderTransitions":2}'
++    control-plane.alpha.kubernetes.io/leader: '{"holderIdentity":"istiod-79597b775c-kvbm6","holderKey":"default","leaseDurationSeconds":30,"acquireTime":"2022-10-29T07:52:45Z","renewTime":"2022-10-29T08:49:32Z","leaderTransitions":2}'
+   creationTimestamp: "2022-09-26T05:49:07Z"
+   name: istio-gateway-status-leader
+   namespace: istio-system
+-  resourceVersion: "4172330"
++  resourceVersion: "4174319"
+   uid: 2ea0d736-5c27-41a1-9335-64d1eac5e34f
+ ---
+ apiVersion: v1
+ kind: ConfigMap
+ metadata:
+   annotations:
+-    control-plane.alpha.kubernetes.io/leader: '{"holderIdentity":"istiod-79597b775c-2g98c","holderKey":"default","leaseDurationSeconds":30,"acquireTime":"2022-10-29T07:52:52Z","renewTime":"2022-10-29T08:44:36Z","leaderTransitions":2}'
++    control-plane.alpha.kubernetes.io/leader: '{"holderIdentity":"istiod-79597b775c-2g98c","holderKey":"default","leaseDurationSeconds":30,"acquireTime":"2022-10-29T07:52:52Z","renewTime":"2022-10-29T08:49:36Z","leaderTransitions":2}'
+   creationTimestamp: "2022-09-26T05:49:07Z"
+   name: istio-leader
+   namespace: istio-system
+-  resourceVersion: "4172309"
++  resourceVersion: "4174353"
+   uid: f6a65ebb-43ee-419f-b18d-3c75632b24dc
+ ---
+ apiVersion: v1
+ kind: ConfigMap
+ metadata:
+   annotations:
+-    control-plane.alpha.kubernetes.io/leader: '{"holderIdentity":"istiod-79597b775c-2g98c","holderKey":"default","leaseDurationSeconds":30,"acquireTime":"2022-10-29T07:52:48Z","renewTime":"2022-10-29T08:44:36Z","leaderTransitions":2}'
++    control-plane.alpha.kubernetes.io/leader: '{"holderIdentity":"istiod-79597b775c-2g98c","holderKey":"default","leaseDurationSeconds":30,"acquireTime":"2022-10-29T07:52:48Z","renewTime":"2022-10-29T08:49:36Z","leaderTransitions":2}'
+   creationTimestamp: "2022-09-26T05:49:08Z"
+   name: istio-namespace-controller-election
+   namespace: istio-system
+-  resourceVersion: "4172312"
++  resourceVersion: "4174355"
+   uid: 8978da26-9db3-480f-9900-a9f6ce3a1331
+ ---
+ apiVersion: v1
+@@ -48981,8 +48981,6 @@
+ apiVersion: v1
+ kind: Endpoints
+ metadata:
+-  annotations:
+-    endpoints.kubernetes.io/last-change-trigger-time: "2022-10-29T08:44:19Z"
+   creationTimestamp: "2022-10-29T08:44:18Z"
+   labels:
+     app: hello-world-00001
+@@ -48997,36 +48995,8 @@
+     serving.knative.dev/serviceUID: 9b8d4b55-a822-48f1-a29a-5e83bd3c79ea
+   name: hello-world-00001-private
+   namespace: demo
+-  resourceVersion: "4172162"
++  resourceVersion: "4172600"
+   uid: a318e495-2e16-480a-9370-6540242d2126
+-subsets:
+-- addresses:
+-  - ip: 10.0.1.94
+-    nodeName: worker-1
+-    targetRef:
+-      kind: Pod
+-      name: hello-world-00001-deployment-677867df7f-swt6j
+-      namespace: demo
+-      uid: 20841fdc-8b5e-4df2-93c8-6dcdad08e98d
+-  ports:
+-  - name: http-usermetric
+-    port: 9091
+-    protocol: TCP
+-  - name: http
+-    port: 8012
+-    protocol: TCP
+-  - name: http-queueadm
+-    port: 8022
+-    protocol: TCP
+-  - name: http-istio
+-    port: 8012
+-    protocol: TCP
+-  - name: https
+-    port: 8112
+-    protocol: TCP
+-  - name: http-autometric
+-    port: 9090
+-    protocol: TCP
+ ---
+ apiVersion: v1
+ kind: Endpoints
+@@ -50934,7 +50904,7 @@
+     node-role.kubernetes.io/control-plane: ""
+     node.kubernetes.io/exclude-from-external-load-balancers: ""
+   name: master
+-  resourceVersion: "4171945"
++  resourceVersion: "4174122"
+   uid: a4ee5438-354e-4955-bab6-36dc8a8522ab
+ spec:
+   podCIDR: 10.244.0.0/24
+@@ -50968,25 +50938,25 @@
+     reason: CiliumIsUp
+     status: "False"
+     type: NetworkUnavailable
+-  - lastHeartbeatTime: "2022-10-29T08:43:56Z"
++  - lastHeartbeatTime: "2022-10-29T08:49:03Z"
+     lastTransitionTime: "2022-09-03T18:44:50Z"
+     message: kubelet has sufficient memory available
+     reason: KubeletHasSufficientMemory
+     status: "False"
+     type: MemoryPressure
+-  - lastHeartbeatTime: "2022-10-29T08:43:56Z"
++  - lastHeartbeatTime: "2022-10-29T08:49:03Z"
+     lastTransitionTime: "2022-09-03T18:44:50Z"
+     message: kubelet has no disk pressure
+     reason: KubeletHasNoDiskPressure
+     status: "False"
+     type: DiskPressure
+-  - lastHeartbeatTime: "2022-10-29T08:43:56Z"
++  - lastHeartbeatTime: "2022-10-29T08:49:03Z"
+     lastTransitionTime: "2022-09-03T18:44:50Z"
+     message: kubelet has sufficient PID available
+     reason: KubeletHasSufficientPID
+     status: "False"
+     type: PIDPressure
+-  - lastHeartbeatTime: "2022-10-29T08:43:56Z"
++  - lastHeartbeatTime: "2022-10-29T08:49:03Z"
+     lastTransitionTime: "2022-09-23T08:13:08Z"
+     message: kubelet is posting ready status. AppArmor enabled
+     reason: KubeletReady
+@@ -51062,7 +51032,7 @@
+     kubernetes.io/hostname: worker-1
+     kubernetes.io/os: linux
+   name: worker-1
+-  resourceVersion: "4170706"
++  resourceVersion: "4172898"
+   uid: c8701587-311e-455f-82d5-c80d16a86122
+ spec:
+   podCIDR: 10.244.1.0/24
+@@ -51093,25 +51063,25 @@
+     reason: CiliumIsUp
+     status: "False"
+     type: NetworkUnavailable
+-  - lastHeartbeatTime: "2022-10-29T08:40:53Z"
++  - lastHeartbeatTime: "2022-10-29T08:45:58Z"
+     lastTransitionTime: "2022-09-03T18:46:14Z"
+     message: kubelet has sufficient memory available
+     reason: KubeletHasSufficientMemory
+     status: "False"
+     type: MemoryPressure
+-  - lastHeartbeatTime: "2022-10-29T08:40:53Z"
++  - lastHeartbeatTime: "2022-10-29T08:45:58Z"
+     lastTransitionTime: "2022-09-03T18:46:14Z"
+     message: kubelet has no disk pressure
+     reason: KubeletHasNoDiskPressure
+     status: "False"
+     type: DiskPressure
+-  - lastHeartbeatTime: "2022-10-29T08:40:53Z"
++  - lastHeartbeatTime: "2022-10-29T08:45:58Z"
+     lastTransitionTime: "2022-09-03T18:46:14Z"
+     message: kubelet has sufficient PID available
+     reason: KubeletHasSufficientPID
+     status: "False"
+     type: PIDPressure
+-  - lastHeartbeatTime: "2022-10-29T08:40:53Z"
++  - lastHeartbeatTime: "2022-10-29T08:45:58Z"
+     lastTransitionTime: "2022-09-23T08:13:04Z"
+     message: kubelet is posting ready status. AppArmor enabled
+     reason: KubeletReady
+@@ -51322,7 +51292,7 @@
+     kubernetes.io/hostname: worker-2
+     kubernetes.io/os: linux
+   name: worker-2
+-  resourceVersion: "4171939"
++  resourceVersion: "4174112"
+   uid: cbba21c1-8b2a-4982-8f65-4ece9cb69a10
+ spec:
+   podCIDR: 10.244.2.0/24
+@@ -51353,25 +51323,25 @@
+     reason: CiliumIsUp
+     status: "False"
+     type: NetworkUnavailable
+-  - lastHeartbeatTime: "2022-10-29T08:43:55Z"
++  - lastHeartbeatTime: "2022-10-29T08:49:01Z"
+     lastTransitionTime: "2022-09-04T07:48:40Z"
+     message: kubelet has sufficient memory available
+     reason: KubeletHasSufficientMemory
+     status: "False"
+     type: MemoryPressure
+-  - lastHeartbeatTime: "2022-10-29T08:43:55Z"
++  - lastHeartbeatTime: "2022-10-29T08:49:01Z"
+     lastTransitionTime: "2022-09-04T07:48:40Z"
+     message: kubelet has no disk pressure
+     reason: KubeletHasNoDiskPressure
+     status: "False"
+     type: DiskPressure
+-  - lastHeartbeatTime: "2022-10-29T08:43:55Z"
++  - lastHeartbeatTime: "2022-10-29T08:49:01Z"
+     lastTransitionTime: "2022-09-04T07:48:40Z"
+     message: kubelet has sufficient PID available
+     reason: KubeletHasSufficientPID
+     status: "False"
+     type: PIDPressure
+-  - lastHeartbeatTime: "2022-10-29T08:43:55Z"
++  - lastHeartbeatTime: "2022-10-29T08:49:01Z"
+     lastTransitionTime: "2022-09-23T08:13:08Z"
+     message: kubelet is posting ready status. AppArmor enabled
+     reason: KubeletReady
+@@ -52662,280 +52632,6 @@
+ apiVersion: v1
+ kind: Pod
+ metadata:
+-  annotations:
+-    serving.knative.dev/creator: kubernetes-admin
+-  creationTimestamp: "2022-10-29T08:44:18Z"
+-  generateName: hello-world-00001-deployment-677867df7f-
+-  labels:
+-    app: hello-world-00001
+-    pod-template-hash: 677867df7f
+-    service.istio.io/canonical-name: hello-world
+-    service.istio.io/canonical-revision: hello-world-00001
+-    serving.knative.dev/configuration: hello-world
+-    serving.knative.dev/configurationGeneration: "1"
+-    serving.knative.dev/configurationUID: da410292-d82b-4853-9f5e-f068c9a4a736
+-    serving.knative.dev/revision: hello-world-00001
+-    serving.knative.dev/revisionUID: 3b2cd2dc-42d7-4a62-9f58-50d704353013
+-    serving.knative.dev/service: hello-world
+-    serving.knative.dev/serviceUID: 9b8d4b55-a822-48f1-a29a-5e83bd3c79ea
+-  name: hello-world-00001-deployment-677867df7f-swt6j
+-  namespace: demo
+-  ownerReferences:
+-  - apiVersion: apps/v1
+-    blockOwnerDeletion: true
+-    controller: true
+-    kind: ReplicaSet
+-    name: hello-world-00001-deployment-677867df7f
+-    uid: 4d8b05f7-a6ce-4d05-9c0b-6e2cceaaf0cb
+-  resourceVersion: "4172160"
+-  uid: 20841fdc-8b5e-4df2-93c8-6dcdad08e98d
+-spec:
+-  containers:
+-  - env:
+-    - name: TARGET
+-      value: World
+-    - name: PORT
+-      value: "8080"
+-    - name: K_REVISION
+-      value: hello-world-00001
+-    - name: K_CONFIGURATION
+-      value: hello-world
+-    - name: K_SERVICE
+-      value: hello-world
+-    image: gcr.io/knative-samples/helloworld-go@sha256:5ea96ba4b872685ff4ddb5cd8d1a97ec18c18fae79ee8df0d29f446c5efe5f50
+-    imagePullPolicy: IfNotPresent
+-    lifecycle:
+-      preStop:
+-        httpGet:
+-          path: /wait-for-drain
+-          port: 8022
+-          scheme: HTTP
+-    name: user-container
+-    ports:
+-    - containerPort: 8080
+-      name: user-port
+-      protocol: TCP
+-    resources: {}
+-    terminationMessagePath: /dev/termination-log
+-    terminationMessagePolicy: FallbackToLogsOnError
+-    volumeMounts:
+-    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+-      name: kube-api-access-nl76m
+-      readOnly: true
+-  - env:
+-    - name: SERVING_NAMESPACE
+-      value: demo
+-    - name: SERVING_SERVICE
+-      value: hello-world
+-    - name: SERVING_CONFIGURATION
+-      value: hello-world
+-    - name: SERVING_REVISION
+-      value: hello-world-00001
+-    - name: QUEUE_SERVING_PORT
+-      value: "8012"
+-    - name: QUEUE_SERVING_TLS_PORT
+-      value: "8112"
+-    - name: CONTAINER_CONCURRENCY
+-      value: "0"
+-    - name: REVISION_TIMEOUT_SECONDS
+-      value: "300"
+-    - name: REVISION_RESPONSE_START_TIMEOUT_SECONDS
+-      value: "0"
+-    - name: REVISION_IDLE_TIMEOUT_SECONDS
+-      value: "0"
+-    - name: SERVING_POD
+-      valueFrom:
+-        fieldRef:
+-          apiVersion: v1
+-          fieldPath: metadata.name
+-    - name: SERVING_POD_IP
+-      valueFrom:
+-        fieldRef:
+-          apiVersion: v1
+-          fieldPath: status.podIP
+-    - name: SERVING_LOGGING_CONFIG
+-    - name: SERVING_LOGGING_LEVEL
+-    - name: SERVING_REQUEST_LOG_TEMPLATE
+-      value: '{"httpRequest": {"requestMethod": "{{.Request.Method}}", "requestUrl":
+-        "{{js .Request.RequestURI}}", "requestSize": "{{.Request.ContentLength}}",
+-        "status": {{.Response.Code}}, "responseSize": "{{.Response.Size}}", "userAgent":
+-        "{{js .Request.UserAgent}}", "remoteIp": "{{js .Request.RemoteAddr}}", "serverIp":
+-        "{{.Revision.PodIP}}", "referer": "{{js .Request.Referer}}", "latency": "{{.Response.Latency}}s",
+-        "protocol": "{{.Request.Proto}}"}, "traceId": "{{index .Request.Header "X-B3-Traceid"}}"}'
+-    - name: SERVING_ENABLE_REQUEST_LOG
+-      value: "false"
+-    - name: SERVING_REQUEST_METRICS_BACKEND
+-      value: prometheus
+-    - name: TRACING_CONFIG_BACKEND
+-      value: none
+-    - name: TRACING_CONFIG_ZIPKIN_ENDPOINT
+-    - name: TRACING_CONFIG_DEBUG
+-      value: "false"
+-    - name: TRACING_CONFIG_SAMPLE_RATE
+-      value: "0.1"
+-    - name: USER_PORT
+-      value: "8080"
+-    - name: SYSTEM_NAMESPACE
+-      value: knative-serving
+-    - name: METRICS_DOMAIN
+-      value: knative.dev/internal/serving
+-    - name: SERVING_READINESS_PROBE
+-      value: '{"tcpSocket":{"port":8080,"host":"127.0.0.1"},"successThreshold":1}'
+-    - name: ENABLE_PROFILING
+-      value: "false"
+-    - name: SERVING_ENABLE_PROBE_REQUEST_LOG
+-      value: "false"
+-    - name: METRICS_COLLECTOR_ADDRESS
+-    - name: CONCURRENCY_STATE_ENDPOINT
+-    - name: CONCURRENCY_STATE_TOKEN_PATH
+-      value: /var/run/secrets/tokens/state-token
+-    - name: HOST_IP
+-      valueFrom:
+-        fieldRef:
+-          apiVersion: v1
+-          fieldPath: status.hostIP
+-    - name: ENABLE_HTTP2_AUTO_DETECTION
+-      value: "false"
+-    image: gcr.io/knative-releases/knative.dev/serving/cmd/queue@sha256:505179c0c4892ea4a70e78bc52ac21b03cd7f1a763d2ecc78e7bbaa1ae59c86c
+-    imagePullPolicy: IfNotPresent
+-    name: queue-proxy
+-    ports:
+-    - containerPort: 8022
+-      name: http-queueadm
+-      protocol: TCP
+-    - containerPort: 9090
+-      name: http-autometric
+-      protocol: TCP
+-    - containerPort: 9091
+-      name: http-usermetric
+-      protocol: TCP
+-    - containerPort: 8012
+-      name: queue-port
+-      protocol: TCP
+-    - containerPort: 8112
+-      name: https-port
+-      protocol: TCP
+-    readinessProbe:
+-      failureThreshold: 3
+-      httpGet:
+-        httpHeaders:
+-        - name: K-Network-Probe
+-          value: queue
+-        path: /
+-        port: 8012
+-        scheme: HTTP
+-      periodSeconds: 10
+-      successThreshold: 1
+-      timeoutSeconds: 1
+-    resources:
+-      requests:
+-        cpu: 25m
+-    securityContext:
+-      allowPrivilegeEscalation: false
+-      capabilities:
+-        drop:
+-        - ALL
+-      readOnlyRootFilesystem: true
+-      runAsNonRoot: true
+-      seccompProfile:
+-        type: RuntimeDefault
+-    terminationMessagePath: /dev/termination-log
+-    terminationMessagePolicy: File
+-    volumeMounts:
+-    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+-      name: kube-api-access-nl76m
+-      readOnly: true
+-  dnsPolicy: ClusterFirst
+-  enableServiceLinks: false
+-  nodeName: worker-1
+-  preemptionPolicy: PreemptLowerPriority
+-  priority: 0
+-  restartPolicy: Always
+-  schedulerName: default-scheduler
+-  securityContext: {}
+-  serviceAccount: default
+-  serviceAccountName: default
+-  terminationGracePeriodSeconds: 300
+-  tolerations:
+-  - effect: NoExecute
+-    key: node.kubernetes.io/not-ready
+-    operator: Exists
+-    tolerationSeconds: 300
+-  - effect: NoExecute
+-    key: node.kubernetes.io/unreachable
+-    operator: Exists
+-    tolerationSeconds: 300
+-  volumes:
+-  - name: kube-api-access-nl76m
+-    projected:
+-      defaultMode: 420
+-      sources:
+-      - serviceAccountToken:
+-          expirationSeconds: 3607
+-          path: token
+-      - configMap:
+-          items:
+-          - key: ca.crt
+-            path: ca.crt
+-          name: kube-root-ca.crt
+-      - downwardAPI:
+-          items:
+-          - fieldRef:
+-              apiVersion: v1
+-              fieldPath: metadata.namespace
+-            path: namespace
+-status:
+-  conditions:
+-  - lastProbeTime: null
+-    lastTransitionTime: "2022-10-29T08:44:18Z"
+-    status: "True"
+-    type: Initialized
+-  - lastProbeTime: null
+-    lastTransitionTime: "2022-10-29T08:44:19Z"
+-    status: "True"
+-    type: Ready
+-  - lastProbeTime: null
+-    lastTransitionTime: "2022-10-29T08:44:19Z"
+-    status: "True"
+-    type: ContainersReady
+-  - lastProbeTime: null
+-    lastTransitionTime: "2022-10-29T08:44:18Z"
+-    status: "True"
+-    type: PodScheduled
+-  containerStatuses:
+-  - containerID: containerd://247fb5843d2aa5159d725ac661fac6fdd61cd2b9ae141a6b5284e6cab9427ba6
+-    image: sha256:95d76e62e2fb487c9bf079ad655489ad41e52e54a92f7e4f0ca793a1487c6661
+-    imageID: gcr.io/knative-releases/knative.dev/serving/cmd/queue@sha256:505179c0c4892ea4a70e78bc52ac21b03cd7f1a763d2ecc78e7bbaa1ae59c86c
+-    lastState: {}
+-    name: queue-proxy
+-    ready: true
+-    restartCount: 0
+-    started: true
+-    state:
+-      running:
+-        startedAt: "2022-10-29T08:44:19Z"
+-  - containerID: containerd://9e8ec6feb42edc34169ef731c156795315cd3c66afb9f0775598a3615c856956
+-    image: sha256:7de72db4aca729a7cc88116e5f8324942c3da2e54135860b421111c6f9a09540
+-    imageID: docker.io/knativesamples/helloworld@sha256:5ea96ba4b872685ff4ddb5cd8d1a97ec18c18fae79ee8df0d29f446c5efe5f50
+-    lastState: {}
+-    name: user-container
+-    ready: true
+-    restartCount: 0
+-    started: true
+-    state:
+-      running:
+-        startedAt: "2022-10-29T08:44:19Z"
+-  hostIP: 192.168.180.166
+-  phase: Running
+-  podIP: 10.0.1.94
+-  podIPs:
+-  - ip: 10.0.1.94
+-  qosClass: Burstable
+-  startTime: "2022-10-29T08:44:18Z"
+----
+-apiVersion: v1
+-kind: Pod
+-metadata:
+   creationTimestamp: "2022-09-23T08:24:34Z"
+   generateName: ingress-nginx-admission-create-
+   labels:
+@@ -154167,7 +153863,7 @@
+     deployment.kubernetes.io/revision: "1"
+     serving.knative.dev/creator: kubernetes-admin
+   creationTimestamp: "2022-10-29T08:44:18Z"
+-  generation: 1
++  generation: 2
+   labels:
+     app: hello-world-00001
+     service.istio.io/canonical-name: hello-world
+@@ -154188,11 +153884,11 @@
+     kind: Revision
+     name: hello-world-00001
+     uid: 3b2cd2dc-42d7-4a62-9f58-50d704353013
+-  resourceVersion: "4172165"
++  resourceVersion: "4172614"
+   uid: d72bb100-8486-455f-b694-5e458711c95f
+ spec:
+   progressDeadlineSeconds: 600
+-  replicas: 1
++  replicas: 0
+   revisionHistoryLimit: 10
+   selector:
+     matchLabels:
+@@ -154374,7 +154070,6 @@
+       securityContext: {}
+       terminationGracePeriodSeconds: 300
+ status:
+-  availableReplicas: 1
+   conditions:
+   - lastTransitionTime: "2022-10-29T08:44:19Z"
+     lastUpdateTime: "2022-10-29T08:44:19Z"
+@@ -154389,10 +154084,7 @@
+     reason: NewReplicaSetAvailable
+     status: "True"
+     type: Progressing
+-  observedGeneration: 1
+-  readyReplicas: 1
+-  replicas: 1
+-  updatedReplicas: 1
++  observedGeneration: 2
+ ---
+ apiVersion: apps/v1
+ kind: Deployment
+@@ -159028,12 +158720,12 @@
+ kind: ReplicaSet
+ metadata:
+   annotations:
+-    deployment.kubernetes.io/desired-replicas: "1"
+-    deployment.kubernetes.io/max-replicas: "2"
++    deployment.kubernetes.io/desired-replicas: "0"
++    deployment.kubernetes.io/max-replicas: "0"
+     deployment.kubernetes.io/revision: "1"
+     serving.knative.dev/creator: kubernetes-admin
+   creationTimestamp: "2022-10-29T08:44:18Z"
+-  generation: 1
++  generation: 2
+   labels:
+     app: hello-world-00001
+     pod-template-hash: 677867df7f
+@@ -159055,10 +158747,10 @@
+     kind: Deployment
+     name: hello-world-00001-deployment
+     uid: d72bb100-8486-455f-b694-5e458711c95f
+-  resourceVersion: "4172163"
++  resourceVersion: "4172606"
+   uid: 4d8b05f7-a6ce-4d05-9c0b-6e2cceaaf0cb
+ spec:
+-  replicas: 1
++  replicas: 0
+   selector:
+     matchLabels:
+       pod-template-hash: 677867df7f
+@@ -159236,11 +158928,8 @@
+       securityContext: {}
+       terminationGracePeriodSeconds: 300
+ status:
+-  availableReplicas: 1
+-  fullyLabeledReplicas: 1
+-  observedGeneration: 1
+-  readyReplicas: 1
+-  replicas: 1
++  observedGeneration: 2
++  replicas: 0
+ ---
+ apiVersion: apps/v1
+ kind: ReplicaSet
+@@ -164354,7 +164043,7 @@
+     kind: Revision
+     name: hello-world-00001
+     uid: 3b2cd2dc-42d7-4a62-9f58-50d704353013
+-  resourceVersion: "4172201"
++  resourceVersion: "4172612"
+   uid: 53cbed59-b863-420a-b718-1ab85394e94c
+ spec:
+   protocolType: http1
+@@ -164364,21 +164053,27 @@
+     kind: Deployment
+     name: hello-world-00001-deployment
+ status:
+-  actualScale: 1
++  actualScale: 0
+   conditions:
+-  - lastTransitionTime: "2022-10-29T08:44:19Z"
+-    status: "True"
++  - lastTransitionTime: "2022-10-29T08:45:19Z"
++    message: The target is not receiving traffic.
++    reason: NoTraffic
++    status: "False"
+     type: Active
+-  - lastTransitionTime: "2022-10-29T08:44:19Z"
+-    status: "True"
++  - lastTransitionTime: "2022-10-29T08:45:19Z"
++    message: The target is not receiving traffic.
++    reason: NoTraffic
++    status: "False"
+     type: Ready
+-  - lastTransitionTime: "2022-10-29T08:44:19Z"
+-    status: "True"
++  - lastTransitionTime: "2022-10-29T08:45:19Z"
++    message: K8s Service is not ready
++    reason: NotReady
++    status: Unknown
+     type: SKSReady
+   - lastTransitionTime: "2022-10-29T08:44:19Z"
+     status: "True"
+     type: ScaleTargetInitialized
+-  desiredScale: 1
++  desiredScale: 0
+   metricsServiceName: hello-world-00001-private
+   observedGeneration: 2
+   serviceName: hello-world-00001
+@@ -165178,82 +164873,6 @@
+ apiVersion: cilium.io/v2
+ kind: CiliumEndpoint
+ metadata:
+-  creationTimestamp: "2022-10-29T08:44:18Z"
+-  generation: 1
+-  labels:
+-    app: hello-world-00001
+-    pod-template-hash: 677867df7f
+-    service.istio.io/canonical-name: hello-world
+-    service.istio.io/canonical-revision: hello-world-00001
+-    serving.knative.dev/configuration: hello-world
+-    serving.knative.dev/configurationGeneration: "1"
+-    serving.knative.dev/configurationUID: da410292-d82b-4853-9f5e-f068c9a4a736
+-    serving.knative.dev/revision: hello-world-00001
+-    serving.knative.dev/revisionUID: 3b2cd2dc-42d7-4a62-9f58-50d704353013
+-    serving.knative.dev/service: hello-world
+-    serving.knative.dev/serviceUID: 9b8d4b55-a822-48f1-a29a-5e83bd3c79ea
+-  name: hello-world-00001-deployment-677867df7f-swt6j
+-  namespace: demo
+-  ownerReferences:
+-  - apiVersion: v1
+-    kind: Pod
+-    name: hello-world-00001-deployment-677867df7f-swt6j
+-    uid: 20841fdc-8b5e-4df2-93c8-6dcdad08e98d
+-  resourceVersion: "4172146"
+-  uid: e4b07452-5474-48b1-a308-4cf81248896f
+-status:
+-  encryption: {}
+-  external-identifiers:
+-    container-id: 88502ae1ab27e3bcae8392a029039f62ca65e07a623f141e8fe769268936fe81
+-    k8s-namespace: demo
+-    k8s-pod-name: hello-world-00001-deployment-677867df7f-swt6j
+-    pod-name: demo/hello-world-00001-deployment-677867df7f-swt6j
+-  id: 3367
+-  identity:
+-    id: 33054
+-    labels:
+-    - k8s:app=hello-world-00001
+-    - k8s:io.cilium.k8s.namespace.labels.kubernetes.io/metadata.name=demo
+-    - k8s:io.cilium.k8s.policy.cluster=kubernetes
+-    - k8s:io.cilium.k8s.policy.serviceaccount=default
+-    - k8s:io.kubernetes.pod.namespace=demo
+-    - k8s:service.istio.io/canonical-name=hello-world
+-    - k8s:service.istio.io/canonical-revision=hello-world-00001
+-    - k8s:serving.knative.dev/configuration=hello-world
+-    - k8s:serving.knative.dev/configurationGeneration=1
+-    - k8s:serving.knative.dev/configurationUID=da410292-d82b-4853-9f5e-f068c9a4a736
+-    - k8s:serving.knative.dev/revision=hello-world-00001
+-    - k8s:serving.knative.dev/revisionUID=3b2cd2dc-42d7-4a62-9f58-50d704353013
+-    - k8s:serving.knative.dev/service=hello-world
+-    - k8s:serving.knative.dev/serviceUID=9b8d4b55-a822-48f1-a29a-5e83bd3c79ea
+-  named-ports:
+-  - name: http-autometric
+-    port: 9090
+-    protocol: TCP
+-  - name: http-queueadm
+-    port: 8022
+-    protocol: TCP
+-  - name: http-usermetric
+-    port: 9091
+-    protocol: TCP
+-  - name: https-port
+-    port: 8112
+-    protocol: TCP
+-  - name: queue-port
+-    port: 8012
+-    protocol: TCP
+-  - name: user-port
+-    port: 8080
+-    protocol: TCP
+-  networking:
+-    addressing:
+-    - ipv4: 10.0.1.94
+-    node: 192.168.180.166
+-  state: ready
+----
+-apiVersion: cilium.io/v2
+-kind: CiliumEndpoint
+-metadata:
+   creationTimestamp: "2022-10-29T07:51:46Z"
+   generation: 2
+   labels:
+@@ -168533,14 +168152,14 @@
+   creationTimestamp: "2022-10-29T07:50:52Z"
+   name: autoscaler-bucket-00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172301"
++  resourceVersion: "4174341"
+   uid: 9c3395b1-bddf-474e-8bb6-3c6ce597b3db
+ spec:
+   acquireTime: "2022-10-29T08:19:53.695918Z"
+   holderIdentity: autoscaler-d97cdddf4-kw66r_10.0.2.229
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:35.502042Z"
++  renewTime: "2022-10-29T08:49:35.678111Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168548,14 +168167,14 @@
+   creationTimestamp: "2022-10-29T07:50:51Z"
+   name: controller.knative.dev.control-protocol.pkg.certificates.reconciler.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172303"
++  resourceVersion: "4174344"
+   uid: 657bf257-f630-4f4a-b508-835d90be8f43
+ spec:
+   acquireTime: "2022-10-29T08:19:54.678380Z"
+   holderIdentity: controller-76d69dd7fc-bsnmf_4d56b518-f558-4346-8c97-c36e9c55d9a9
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:35.613812Z"
++  renewTime: "2022-10-29T08:49:35.784726Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168563,14 +168182,14 @@
+   creationTimestamp: "2022-10-29T07:50:51Z"
+   name: controller.knative.dev.serving.pkg.reconciler.configuration.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172280"
++  resourceVersion: "4174322"
+   uid: 3a373c50-b769-4e73-a9ca-8d3fa7e957bd
+ spec:
+   acquireTime: "2022-10-29T08:20:02.218391Z"
+   holderIdentity: controller-76d69dd7fc-bsnmf_e9bad60b-841f-4f90-a45e-798cbace201f
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:33.108910Z"
++  renewTime: "2022-10-29T08:49:33.278572Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168578,14 +168197,14 @@
+   creationTimestamp: "2022-10-29T07:50:51Z"
+   name: controller.knative.dev.serving.pkg.reconciler.gc.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172282"
++  resourceVersion: "4174323"
+   uid: 43529114-9b03-484e-b811-1472c73442a3
+ spec:
+   acquireTime: "2022-10-29T08:19:52.342081Z"
+   holderIdentity: controller-76d69dd7fc-bsnmf_a1f6fa17-a2d0-49e6-8f7c-b83010d30208
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:33.241735Z"
++  renewTime: "2022-10-29T08:49:33.417995Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168593,14 +168212,14 @@
+   creationTimestamp: "2022-10-29T07:50:51Z"
+   name: controller.knative.dev.serving.pkg.reconciler.labeler.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172310"
++  resourceVersion: "4174351"
+   uid: 6583275c-8382-4453-ad3c-165c0421f934
+ spec:
+   acquireTime: "2022-10-29T08:19:45.319003Z"
+   holderIdentity: controller-76d69dd7fc-bsnmf_2349a035-6472-4193-bdb9-58c729e638f9
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:36.236452Z"
++  renewTime: "2022-10-29T08:49:36.416152Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168608,14 +168227,14 @@
+   creationTimestamp: "2022-10-29T07:50:51Z"
+   name: controller.knative.dev.serving.pkg.reconciler.nscert.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172338"
++  resourceVersion: "4174315"
+   uid: 4d55e6b4-7176-4cab-9270-0ff18ceebf4b
+ spec:
+   acquireTime: "2022-10-29T08:19:50.253075Z"
+   holderIdentity: controller-76d69dd7fc-bsnmf_7a26a548-5628-4d71-90bf-928d0a101a07
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:41.148087Z"
++  renewTime: "2022-10-29T08:49:31.322411Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168623,14 +168242,14 @@
+   creationTimestamp: "2022-10-29T07:50:51Z"
+   name: controller.knative.dev.serving.pkg.reconciler.revision.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172283"
++  resourceVersion: "4174324"
+   uid: 08ca8ed5-fb30-44bd-b278-745fc912e3ca
+ spec:
+   acquireTime: "2022-10-29T08:19:52.420843Z"
+   holderIdentity: controller-76d69dd7fc-bsnmf_9e38d721-bab1-4568-86c7-78e372645e99
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:33.310814Z"
++  renewTime: "2022-10-29T08:49:33.504363Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168638,14 +168257,14 @@
+   creationTimestamp: "2022-10-29T07:50:51Z"
+   name: controller.knative.dev.serving.pkg.reconciler.route.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172322"
++  resourceVersion: "4174361"
+   uid: 40a354db-54e0-4c1f-9336-8baa19cd686a
+ spec:
+   acquireTime: "2022-10-29T08:19:56.955254Z"
+   holderIdentity: controller-76d69dd7fc-bsnmf_0dfd1813-d008-4a2d-ad3d-07d80972bdc8
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:37.861110Z"
++  renewTime: "2022-10-29T08:49:38.044193Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168653,14 +168272,14 @@
+   creationTimestamp: "2022-10-29T07:50:51Z"
+   name: controller.knative.dev.serving.pkg.reconciler.serverlessservice.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172316"
++  resourceVersion: "4174356"
+   uid: 6f711841-200e-4323-ad87-1b0950093d09
+ spec:
+   acquireTime: "2022-10-29T08:20:06.014203Z"
+   holderIdentity: controller-76d69dd7fc-bsnmf_b384fabf-57b2-44e0-ab78-586abcdd3929
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:36.891958Z"
++  renewTime: "2022-10-29T08:49:37.065194Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168668,14 +168287,14 @@
+   creationTimestamp: "2022-10-29T07:50:51Z"
+   name: controller.knative.dev.serving.pkg.reconciler.service.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172323"
++  resourceVersion: "4174364"
+   uid: 4eb01680-90e0-405c-a4f0-674a193786a5
+ spec:
+   acquireTime: "2022-10-29T08:19:47.173895Z"
+   holderIdentity: controller-76d69dd7fc-bsnmf_b57d4b96-8738-4a96-9d52-edb8cf5962d1
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:38.063241Z"
++  renewTime: "2022-10-29T08:49:38.253771Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168683,14 +168302,14 @@
+   creationTimestamp: "2022-10-29T07:50:59Z"
+   name: domainmapping-webhook.defaultingwebhook.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172328"
++  resourceVersion: "4174368"
+   uid: c2986272-2ab8-43a1-b690-97412ecf186a
+ spec:
+   acquireTime: "2022-10-29T08:19:48.292731Z"
+   holderIdentity: domainmapping-webhook-7d767966dc-bqrwm_b8a4f270-596d-458a-b3ae-ec944dfc7566
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:39.267781Z"
++  renewTime: "2022-10-29T08:49:39.461908Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168698,14 +168317,14 @@
+   creationTimestamp: "2022-10-29T07:50:59Z"
+   name: domainmapping-webhook.validationwebhook.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172288"
++  resourceVersion: "4174332"
+   uid: 7bfcab71-bccb-46c2-ba9a-9f09a6b02565
+ spec:
+   acquireTime: "2022-10-29T08:19:53.245736Z"
+   holderIdentity: domainmapping-webhook-7d767966dc-bqrwm_2cffa31b-6649-40eb-8fce-06522830cc0e
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:34.148932Z"
++  renewTime: "2022-10-29T08:49:34.330509Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168713,14 +168332,14 @@
+   creationTimestamp: "2022-10-29T07:50:59Z"
+   name: domainmapping-webhook.webhookcertificates.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172287"
++  resourceVersion: "4174331"
+   uid: 6e847fb4-b98a-4399-845b-5cf1dfde0d0a
+ spec:
+   acquireTime: "2022-10-29T08:19:43.130142Z"
+   holderIdentity: domainmapping-webhook-7d767966dc-bqrwm_afdeafe5-4ca1-419e-a06a-6635a966d0fd
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:34.020480Z"
++  renewTime: "2022-10-29T08:49:34.202183Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168728,14 +168347,14 @@
+   creationTimestamp: "2022-10-29T07:50:55Z"
+   name: domainmapping.knative.dev.serving.pkg.reconciler.domainmapping.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172337"
++  resourceVersion: "4174313"
+   uid: d85efb8a-fa83-471d-933c-76b246b28813
+ spec:
+   acquireTime: "2022-10-29T08:19:59.813234Z"
+   holderIdentity: domain-mapping-6bfbbc8448-7srpb_28a0bab1-d22f-469e-acc2-c4a3efc240e9
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:40.781104Z"
++  renewTime: "2022-10-29T08:49:30.964505Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168743,14 +168362,14 @@
+   creationTimestamp: "2022-10-29T07:52:12Z"
+   name: net-istio-controller.knative.dev.net-istio.pkg.reconciler.ingress.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172313"
++  resourceVersion: "4174354"
+   uid: a18d4e54-4d64-401f-a033-cb8b287c92e6
+ spec:
+   acquireTime: "2022-10-29T08:19:45.393759Z"
+   holderIdentity: net-istio-controller-5c767878f6-nj9ll_b863e695-5717-46c6-8dfc-1163e8a10667
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:36.339191Z"
++  renewTime: "2022-10-29T08:49:36.530352Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168758,14 +168377,14 @@
+   creationTimestamp: "2022-10-29T07:52:12Z"
+   name: net-istio-controller.knative.dev.net-istio.pkg.reconciler.serverlessservice.reconciler.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172317"
++  resourceVersion: "4174357"
+   uid: ff0726b1-954d-4aee-9a79-84ad21363fc4
+ spec:
+   acquireTime: "2022-10-29T08:19:56.037597Z"
+   holderIdentity: net-istio-controller-5c767878f6-nj9ll_403855f1-68c5-4602-88e9-8e4c02e60cb4
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:36.903536Z"
++  renewTime: "2022-10-29T08:49:37.079119Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168773,14 +168392,14 @@
+   creationTimestamp: "2022-10-29T07:52:08Z"
+   name: net-istio-webhook.configmapwebhook.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172289"
++  resourceVersion: "4174333"
+   uid: 138dcc6d-d84a-4a5e-8576-71f975c769c8
+ spec:
+   acquireTime: "2022-10-29T08:19:43.236797Z"
+   holderIdentity: net-istio-webhook-84f67c7f48-cgcfm_b4e56569-7442-4522-914e-4f0ddd8d6ee9
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:34.153328Z"
++  renewTime: "2022-10-29T08:49:34.335040Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168788,14 +168407,14 @@
+   creationTimestamp: "2022-10-29T07:52:08Z"
+   name: net-istio-webhook.defaultingwebhook.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172290"
++  resourceVersion: "4174334"
+   uid: b6855286-a1e2-42b1-81a0-b80d1243a075
+ spec:
+   acquireTime: "2022-10-29T08:19:53.332148Z"
+   holderIdentity: net-istio-webhook-84f67c7f48-cgcfm_0f891899-20ac-4daa-bf35-ffb99a857665
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:34.230977Z"
++  renewTime: "2022-10-29T08:49:34.406688Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168803,14 +168422,14 @@
+   creationTimestamp: "2022-10-29T07:52:08Z"
+   name: net-istio-webhook.webhookcertificates.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172329"
++  resourceVersion: "4174369"
+   uid: a792d26c-e906-442d-8a25-29e4c36e8f1f
+ spec:
+   acquireTime: "2022-10-29T08:19:48.385048Z"
+   holderIdentity: net-istio-webhook-84f67c7f48-cgcfm_8e6c1380-912c-4780-bd94-f1f7c4a89cde
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:39.338347Z"
++  renewTime: "2022-10-29T08:49:39.524983Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168833,14 +168452,14 @@
+   creationTimestamp: "2022-10-29T07:51:03Z"
+   name: webhook.configmapwebhook.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172335"
++  resourceVersion: "4174377"
+   uid: ab859340-6f41-44e4-a62b-1bef50822a51
+ spec:
+   acquireTime: "2022-10-29T08:19:49.375410Z"
+   holderIdentity: webhook-d59c4cbf4-5z5rk_2f571dcb-d872-49de-ab8f-60680a6ed1bd
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:40.287300Z"
++  renewTime: "2022-10-29T08:49:40.464509Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168848,14 +168467,14 @@
+   creationTimestamp: "2022-10-29T07:51:03Z"
+   name: webhook.defaultingwebhook.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172302"
++  resourceVersion: "4174343"
+   uid: 6637eb67-cd00-455f-b197-2dad1ed5d336
+ spec:
+   acquireTime: "2022-10-29T08:19:44.715032Z"
+   holderIdentity: webhook-d59c4cbf4-5z5rk_78aff597-9e3f-42d5-a39b-de239222e21e
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:35.610203Z"
++  renewTime: "2022-10-29T08:49:35.783343Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168863,14 +168482,14 @@
+   creationTimestamp: "2022-10-29T07:51:03Z"
+   name: webhook.validationwebhook.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172296"
++  resourceVersion: "4174338"
+   uid: cc52e2f3-722e-4250-881d-bc3194b6bbcb
+ spec:
+   acquireTime: "2022-10-29T08:19:44.242897Z"
+   holderIdentity: webhook-d59c4cbf4-5z5rk_9f16bf2b-cca4-43bd-8d64-82a56d1a808d
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:35.192001Z"
++  renewTime: "2022-10-29T08:49:35.379844Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168878,14 +168497,14 @@
+   creationTimestamp: "2022-10-29T07:51:03Z"
+   name: webhook.webhookcertificates.00-of-01
+   namespace: knative-serving
+-  resourceVersion: "4172311"
++  resourceVersion: "4174352"
+   uid: 602b0d7e-903a-43ce-982f-711cd568fb3a
+ spec:
+   acquireTime: "2022-10-29T08:19:45.308675Z"
+   holderIdentity: webhook-d59c4cbf4-5z5rk_42280bee-254e-431d-93c6-2529a52b7274
+   leaseDurationSeconds: 60
+   leaseTransitions: 1
+-  renewTime: "2022-10-29T08:44:36.243240Z"
++  renewTime: "2022-10-29T08:49:36.422388Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168898,12 +168517,12 @@
+     kind: Node
+     name: master
+     uid: a4ee5438-354e-4955-bab6-36dc8a8522ab
+-  resourceVersion: "4172304"
++  resourceVersion: "4174317"
+   uid: 650c73de-8101-4534-a5c5-283ad96756e3
+ spec:
+   holderIdentity: master
+   leaseDurationSeconds: 40
+-  renewTime: "2022-10-29T08:44:35.712437Z"
++  renewTime: "2022-10-29T08:49:31.792550Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168916,12 +168535,12 @@
+     kind: Node
+     name: worker-1
+     uid: c8701587-311e-455f-82d5-c80d16a86122
+-  resourceVersion: "4172315"
++  resourceVersion: "4174329"
+   uid: 0cf445cf-dd8c-49b5-8f6b-add0c69e20c0
+ spec:
+   holderIdentity: worker-1
+   leaseDurationSeconds: 40
+-  renewTime: "2022-10-29T08:44:36.759683Z"
++  renewTime: "2022-10-29T08:49:34.109075Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168934,12 +168553,12 @@
+     kind: Node
+     name: worker-2
+     uid: cbba21c1-8b2a-4982-8f65-4ece9cb69a10
+-  resourceVersion: "4172295"
++  resourceVersion: "4174314"
+   uid: 04c0881d-be3d-482b-be61-c36f51ac0a20
+ spec:
+   holderIdentity: worker-2
+   leaseDurationSeconds: 40
+-  renewTime: "2022-10-29T08:44:35.177038Z"
++  renewTime: "2022-10-29T08:49:31.153584Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168947,14 +168566,14 @@
+   creationTimestamp: "2022-09-23T08:40:53Z"
+   name: cert-manager-cainjector-leader-election
+   namespace: kube-system
+-  resourceVersion: "4172339"
++  resourceVersion: "4174282"
+   uid: 062a1425-cdde-43cd-a538-5af50009d168
+ spec:
+   acquireTime: "2022-10-29T08:20:10.520081Z"
+   holderIdentity: cert-manager-cainjector-7985fb445b-gmrmb_ba6d6e51-c5b8-45d7-a80d-07c19c6af4a5
+   leaseDurationSeconds: 60
+   leaseTransitions: 13
+-  renewTime: "2022-10-29T08:44:41.166796Z"
++  renewTime: "2022-10-29T08:49:26.288693Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168962,14 +168581,14 @@
+   creationTimestamp: "2022-09-23T08:40:48Z"
+   name: cert-manager-controller
+   namespace: kube-system
+-  resourceVersion: "4172342"
++  resourceVersion: "4174289"
+   uid: fc270085-7425-4015-a534-6e85f49b379b
+ spec:
+   acquireTime: "2022-09-23T08:40:48.956025Z"
+   holderIdentity: cert-manager-655bf9748f-wmb2s-external-cert-manager-controller
+   leaseDurationSeconds: 60
+   leaseTransitions: 0
+-  renewTime: "2022-10-29T08:44:41.969124Z"
++  renewTime: "2022-10-29T08:49:27.100148Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168977,14 +168596,14 @@
+   creationTimestamp: "2022-09-03T18:47:18Z"
+   name: cilium-operator-resource-lock
+   namespace: kube-system
+-  resourceVersion: "4172340"
++  resourceVersion: "4174373"
+   uid: de3eb05e-f116-499c-b967-18afd8975f84
+ spec:
+   acquireTime: "2022-10-29T08:18:52.869950Z"
+   holderIdentity: worker-1-JSQIBfhhTe
+   leaseDurationSeconds: 15
+   leaseTransitions: 16
+-  renewTime: "2022-10-29T08:44:41.244682Z"
++  renewTime: "2022-10-29T08:49:40.092647Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -168992,14 +168611,14 @@
+   creationTimestamp: "2022-09-03T18:44:55Z"
+   name: kube-controller-manager
+   namespace: kube-system
+-  resourceVersion: "4172341"
++  resourceVersion: "4174374"
+   uid: 3e826275-56f7-4a3d-b1a2-fc4577d0de97
+ spec:
+   acquireTime: "2022-10-29T08:18:45.199062Z"
+   holderIdentity: master_c69ff516-dbb4-47f5-83fc-16549d17a27d
+   leaseDurationSeconds: 15
+   leaseTransitions: 16
+-  renewTime: "2022-10-29T08:44:41.381234Z"
++  renewTime: "2022-10-29T08:49:40.186234Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169007,14 +168626,14 @@
+   creationTimestamp: "2022-09-03T18:44:55Z"
+   name: kube-scheduler
+   namespace: kube-system
+-  resourceVersion: "4172336"
++  resourceVersion: "4174370"
+   uid: 119527f2-e583-487e-a0b2-6a768aa6e9e1
+ spec:
+   acquireTime: "2022-10-29T08:18:42.361910Z"
+   holderIdentity: master_c43bf6c0-ddce-453d-987f-e1f7e2160926
+   leaseDurationSeconds: 15
+   leaseTransitions: 16
+-  renewTime: "2022-10-29T08:44:40.731893Z"
++  renewTime: "2022-10-29T08:49:39.529577Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169022,14 +168641,14 @@
+   creationTimestamp: "2022-09-26T07:01:41Z"
+   name: 31e04290.jaegertracing.io
+   namespace: observability
+-  resourceVersion: "4172250"
++  resourceVersion: "4174367"
+   uid: c7b7e955-65c8-4386-8eff-f3daa0708642
+ spec:
+   acquireTime: "2022-10-29T08:21:28.772920Z"
+   holderIdentity: jaeger-operator-5f554d485d-gzskh_2309e122-8629-42a4-862f-42aacad09635
+   leaseDurationSeconds: 137
+   leaseTransitions: 11
+-  renewTime: "2022-10-29T08:44:27.100700Z"
++  renewTime: "2022-10-29T08:49:39.170367Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169037,14 +168656,14 @@
+   creationTimestamp: "2022-09-26T06:55:50Z"
+   name: 9f7554c3.opentelemetry.io
+   namespace: opentelemetry-operator-system
+-  resourceVersion: "4172131"
++  resourceVersion: "4174312"
+   uid: eda9c636-8f9d-4e0e-9c30-0c4b291d8d0e
+ spec:
+   acquireTime: "2022-10-29T08:21:20.101926Z"
+   holderIdentity: opentelemetry-operator-controller-manager-65f6ff7666-9hbdm_ce2cf1cd-bdda-4b45-835a-58593f7f1f3e
+   leaseDurationSeconds: 137
+   leaseTransitions: 11
+-  renewTime: "2022-10-29T08:44:18.516684Z"
++  renewTime: "2022-10-29T08:49:30.609506Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169052,14 +168671,14 @@
+   creationTimestamp: "2022-10-07T09:47:55Z"
+   name: controller.github.com.tektoncd.triggers.pkg.reconciler.clusterinterceptor.reconciler.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172334"
++  resourceVersion: "4174376"
+   uid: 32faaaa9-b52a-4bef-80c4-ea2ac0c8285a
+ spec:
+   acquireTime: "2022-10-29T08:20:09.136251Z"
+   holderIdentity: tekton-triggers-controller-dbb46c886-bfpbj_4ebd1849-d02f-4083-8ede-4e8222f64673
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:40.041831Z"
++  renewTime: "2022-10-29T08:49:40.223926Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169067,14 +168686,14 @@
+   creationTimestamp: "2022-10-07T09:47:55Z"
+   name: controller.github.com.tektoncd.triggers.pkg.reconciler.eventlistener.reconciler.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172285"
++  resourceVersion: "4174326"
+   uid: 3d42cbf1-590f-4b3d-82ef-fce6022c0425
+ spec:
+   acquireTime: "2022-10-29T08:20:12.701398Z"
+   holderIdentity: tekton-triggers-controller-dbb46c886-bfpbj_9912e16d-4010-4c00-a998-35ccf5a5e489
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:33.631676Z"
++  renewTime: "2022-10-29T08:49:33.827216Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169082,14 +168701,14 @@
+   creationTimestamp: "2022-10-07T09:47:06Z"
+   name: tekton-pipelines-controller.github.com.tektoncd.pipeline.pkg.reconciler.pipelinerun.reconciler.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172286"
++  resourceVersion: "4174327"
+   uid: bed97c02-32a9-487d-86e3-19dadcc2ef01
+ spec:
+   acquireTime: "2022-10-29T08:20:02.861778Z"
+   holderIdentity: tekton-pipelines-controller-d98cb8d45-cdlw4_257caae8-6008-4a13-bf57-15b59e67a7ee
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:33.765128Z"
++  renewTime: "2022-10-29T08:49:33.948660Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169097,14 +168716,14 @@
+   creationTimestamp: "2022-10-07T09:47:06Z"
+   name: tekton-pipelines-controller.github.com.tektoncd.pipeline.pkg.reconciler.resolutionrequest.reconciler.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172325"
++  resourceVersion: "4174366"
+   uid: 58b4f4f7-2293-4d9d-9202-922cb5a008eb
+ spec:
+   acquireTime: "2022-10-29T08:20:07.595777Z"
+   holderIdentity: tekton-pipelines-controller-d98cb8d45-cdlw4_9e5aef18-4883-46a1-8360-a7bec0f7a835
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:38.531697Z"
++  renewTime: "2022-10-29T08:49:38.751370Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169112,14 +168731,14 @@
+   creationTimestamp: "2022-10-07T09:47:06Z"
+   name: tekton-pipelines-controller.github.com.tektoncd.pipeline.pkg.reconciler.run.reconciler.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172343"
++  resourceVersion: "4174321"
+   uid: e25162b8-9969-4ebf-af6a-26d00ade293b
+ spec:
+   acquireTime: "2022-10-29T08:20:01.091391Z"
+   holderIdentity: tekton-pipelines-controller-d98cb8d45-cdlw4_0eb195fa-2837-4014-addc-bd6d6014497f
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:42.061893Z"
++  renewTime: "2022-10-29T08:49:32.245895Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169127,14 +168746,14 @@
+   creationTimestamp: "2022-10-07T09:47:06Z"
+   name: tekton-pipelines-controller.github.com.tektoncd.pipeline.pkg.reconciler.taskrun.reconciler.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172321"
++  resourceVersion: "4174360"
+   uid: 306103ad-5394-45c4-a068-9d8bda1feb29
+ spec:
+   acquireTime: "2022-10-29T08:20:06.499512Z"
+   holderIdentity: tekton-pipelines-controller-d98cb8d45-cdlw4_173dc277-92e8-45fc-8923-8ec167542c93
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:37.405701Z"
++  renewTime: "2022-10-29T08:49:37.596892Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169142,14 +168761,14 @@
+   creationTimestamp: "2022-10-07T09:47:02Z"
+   name: tekton-pipelines-webhook.configmapwebhook.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172291"
++  resourceVersion: "4174335"
+   uid: 2d0b0de5-4d16-46ff-9a97-3604082a2175
+ spec:
+   acquireTime: "2022-10-29T08:20:03.604387Z"
+   holderIdentity: tekton-pipelines-webhook-76ffbff7bf-jrxhs_a23e2c43-1d71-4428-a893-103bf728fd23
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:34.500501Z"
++  renewTime: "2022-10-29T08:49:34.680416Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169157,14 +168776,14 @@
+   creationTimestamp: "2022-10-07T09:47:02Z"
+   name: tekton-pipelines-webhook.conversionwebhook.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172324"
++  resourceVersion: "4174365"
+   uid: e4330299-ea46-452a-b00e-2a1d8c065725
+ spec:
+   acquireTime: "2022-10-29T08:19:57.604131Z"
+   holderIdentity: tekton-pipelines-webhook-76ffbff7bf-jrxhs_34dd889e-9c9d-4670-a76c-0c4662c3c9de
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:38.530555Z"
++  renewTime: "2022-10-29T08:49:38.734566Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169172,14 +168791,14 @@
+   creationTimestamp: "2022-10-07T09:47:02Z"
+   name: tekton-pipelines-webhook.defaultingwebhook.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172318"
++  resourceVersion: "4174358"
+   uid: 9fb53504-afc8-4b7d-9716-29c30bb1a56a
+ spec:
+   acquireTime: "2022-10-29T08:20:06.304837Z"
+   holderIdentity: tekton-pipelines-webhook-76ffbff7bf-jrxhs_813434e5-5cc9-4b26-bdfa-4ce7ca71e2c7
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:37.189731Z"
++  renewTime: "2022-10-29T08:49:37.373630Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169187,14 +168806,14 @@
+   creationTimestamp: "2022-10-07T09:47:02Z"
+   name: tekton-pipelines-webhook.validationwebhook.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172332"
++  resourceVersion: "4174372"
+   uid: 8f58260e-141f-4909-851c-07b6fd37d1d3
+ spec:
+   acquireTime: "2022-10-29T08:19:58.656819Z"
+   holderIdentity: tekton-pipelines-webhook-76ffbff7bf-jrxhs_41ad30ca-a9c1-495c-8c77-d71806f01573
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:39.563351Z"
++  renewTime: "2022-10-29T08:49:39.745551Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169202,14 +168821,14 @@
+   creationTimestamp: "2022-10-07T09:47:02Z"
+   name: tekton-pipelines-webhook.webhookcertificates.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172308"
++  resourceVersion: "4174350"
+   uid: 97448df8-5a55-4798-943e-aaf35aba2272
+ spec:
+   acquireTime: "2022-10-29T08:19:55.166523Z"
+   holderIdentity: tekton-pipelines-webhook-76ffbff7bf-jrxhs_352044cf-5e2c-4597-a5b6-8816d4b7f48e
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:36.128986Z"
++  renewTime: "2022-10-29T08:49:36.319308Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169217,14 +168836,14 @@
+   creationTimestamp: "2022-10-07T09:47:54Z"
+   name: webhook-triggers.configmapwebhook.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172294"
++  resourceVersion: "4174337"
+   uid: ec001cf6-980e-412f-90d9-19034ef63f10
+ spec:
+   acquireTime: "2022-10-29T08:19:53.972309Z"
+   holderIdentity: tekton-triggers-webhook-587c7b599d-bf9hh_8a127ba1-ec21-48f5-b649-f247ea4fcc07
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:34.913159Z"
++  renewTime: "2022-10-29T08:49:35.102869Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169232,14 +168851,14 @@
+   creationTimestamp: "2022-10-07T09:47:54Z"
+   name: webhook-triggers.defaultingwebhook.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172305"
++  resourceVersion: "4174347"
+   uid: edd21133-b5bc-4dc0-88c1-3bddf2b76f02
+ spec:
+   acquireTime: "2022-10-29T08:19:55.034511Z"
+   holderIdentity: tekton-triggers-webhook-587c7b599d-bf9hh_c068fb1a-19a0-4236-9e00-01dbff2a562b
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:35.919823Z"
++  renewTime: "2022-10-29T08:49:36.108909Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169247,14 +168866,14 @@
+   creationTimestamp: "2022-10-07T09:47:54Z"
+   name: webhook-triggers.validationwebhook.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172298"
++  resourceVersion: "4174339"
+   uid: 3325696c-48ca-41c5-bc9b-b011840e59be
+ spec:
+   acquireTime: "2022-10-29T08:19:54.437592Z"
+   holderIdentity: tekton-triggers-webhook-587c7b599d-bf9hh_b2ee5e21-e690-4328-abb9-23c73da43ca2
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:35.332613Z"
++  renewTime: "2022-10-29T08:49:35.502320Z"
+ ---
+ apiVersion: coordination.k8s.io/v1
+ kind: Lease
+@@ -169262,14 +168881,14 @@
+   creationTimestamp: "2022-10-07T09:47:54Z"
+   name: webhook-triggers.webhookcertificates.00-of-01
+   namespace: tekton-pipelines
+-  resourceVersion: "4172333"
++  resourceVersion: "4174375"
+   uid: bb12f396-1a38-417a-99ad-c4b3f987fec9
+ spec:
+   acquireTime: "2022-10-29T08:19:59.101418Z"
+   holderIdentity: tekton-triggers-webhook-587c7b599d-bf9hh_db506921-1d6f-4673-8e0a-7ee549cc1724
+   leaseDurationSeconds: 60
+   leaseTransitions: 3
+-  renewTime: "2022-10-29T08:44:40.034668Z"
++  renewTime: "2022-10-29T08:49:40.217183Z"
+ ---
+ addressType: IPv4
+ apiVersion: discovery.k8s.io/v1
+@@ -169524,26 +169143,12 @@
+ ---
+ addressType: IPv4
+ apiVersion: discovery.k8s.io/v1
+-endpoints:
+-- addresses:
+-  - 10.0.1.94
+-  conditions:
+-    ready: true
+-    serving: true
+-    terminating: false
+-  nodeName: worker-1
+-  targetRef:
+-    kind: Pod
+-    name: hello-world-00001-deployment-677867df7f-swt6j
+-    namespace: demo
+-    uid: 20841fdc-8b5e-4df2-93c8-6dcdad08e98d
++endpoints: null
+ kind: EndpointSlice
+ metadata:
+-  annotations:
+-    endpoints.kubernetes.io/last-change-trigger-time: "2022-10-29T08:44:19Z"
+   creationTimestamp: "2022-10-29T08:44:18Z"
+   generateName: hello-world-00001-private-
+-  generation: 3
++  generation: 6
+   labels:
+     app: hello-world-00001
+     endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+@@ -169566,27 +169171,9 @@
+     kind: Service
+     name: hello-world-00001-private
+     uid: d74894c4-56c8-4a8e-b443-d4fb29c71cd8
+-  resourceVersion: "4172161"
++  resourceVersion: "4172831"
+   uid: b6d8ca6a-5284-4931-8b76-723bc83d647e
+-ports:
+-- name: http-istio
+-  port: 8012
+-  protocol: TCP
+-- name: http-queueadm
+-  port: 8022
+-  protocol: TCP
+-- name: https
+-  port: 8112
+-  protocol: TCP
+-- name: http-autometric
+-  port: 9090
+-  protocol: TCP
+-- name: http-usermetric
+-  port: 9091
+-  protocol: TCP
+-- name: http
+-  port: 8012
+-  protocol: TCP
++ports: null
+ ---
+ addressType: IPv4
+ apiVersion: discovery.k8s.io/v1
+@@ -177010,7 +176597,7 @@
+     autoscaling.knative.dev/class: kpa.autoscaling.knative.dev
+     serving.knative.dev/creator: kubernetes-admin
+   creationTimestamp: "2022-10-29T08:44:18Z"
+-  generation: 3
++  generation: 4
+   labels:
+     app: hello-world-00001
+     serving.knative.dev/configuration: hello-world
+@@ -177029,11 +176616,11 @@
+     kind: PodAutoscaler
+     name: hello-world-00001
+     uid: 53cbed59-b863-420a-b718-1ab85394e94c
+-  resourceVersion: "4172171"
++  resourceVersion: "4172613"
+   uid: 239055fd-4872-49f1-9d16-8344a3f14609
+ spec:
+   mode: Proxy
+-  numActivators: 4
++  numActivators: 3
+   objectRef:
+     apiVersion: apps/v1
+     kind: Deployment
+@@ -177047,13 +176634,17 @@
+     severity: Info
+     status: "True"
+     type: ActivatorEndpointsPopulated
+-  - lastTransitionTime: "2022-10-29T08:44:19Z"
+-    status: "True"
++  - lastTransitionTime: "2022-10-29T08:45:19Z"
++    message: K8s Service is not ready
++    reason: NoHealthyBackends
++    status: Unknown
+     type: EndpointsPopulated
+-  - lastTransitionTime: "2022-10-29T08:44:19Z"
+-    status: "True"
++  - lastTransitionTime: "2022-10-29T08:45:19Z"
++    message: K8s Service is not ready
++    reason: NoHealthyBackends
++    status: Unknown
+     type: Ready
+-  observedGeneration: 3
++  observedGeneration: 4
+   privateServiceName: hello-world-00001-private
+   serviceName: hello-world-00001
+ ---
+@@ -190750,7 +190341,7 @@
+     kind: Configuration
+     name: hello-world
+     uid: da410292-d82b-4853-9f5e-f068c9a4a736
+-  resourceVersion: "4172202"
++  resourceVersion: "4172616"
+   uid: 3b2cd2dc-42d7-4a62-9f58-50d704353013
+ spec:
+   containerConcurrency: 0
+@@ -190771,11 +190362,13 @@
+   enableServiceLinks: false
+   timeoutSeconds: 300
+ status:
+-  actualReplicas: 1
++  actualReplicas: 0
+   conditions:
+-  - lastTransitionTime: "2022-10-29T08:44:19Z"
++  - lastTransitionTime: "2022-10-29T08:45:19Z"
++    message: The target is not receiving traffic.
++    reason: NoTraffic
+     severity: Info
+-    status: "True"
++    status: "False"
+     type: Active
+   - lastTransitionTime: "2022-10-29T08:44:19Z"
+     status: "True"
+@@ -190789,7 +190382,7 @@
+   containerStatuses:
+   - imageDigest: gcr.io/knative-samples/helloworld-go@sha256:5ea96ba4b872685ff4ddb5cd8d1a97ec18c18fae79ee8df0d29f446c5efe5f50
+     name: user-container
+-  desiredReplicas: 1
++  desiredReplicas: 0
+   observedGeneration: 1
+ ---
+ apiVersion: serving.knative.dev/v1

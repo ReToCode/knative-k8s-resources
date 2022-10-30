@@ -1,0 +1,52 @@
+apiVersion: serving.knative.dev/v1
+kind: Route
+metadata:
+  annotations:
+    serving.knative.dev/creator: kubernetes-admin
+    serving.knative.dev/lastModifier: kubernetes-admin
+  creationTimestamp: "2022-10-29T08:44:17Z"
+  finalizers:
+    - routes.serving.knative.dev
+  generation: 1
+  labels:
+    serving.knative.dev/service: hello-world
+  name: hello-world
+  namespace: demo
+  ownerReferences:
+    - apiVersion: serving.knative.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: hello-world
+      uid: 9b8d4b55-a822-48f1-a29a-5e83bd3c79ea
+  resourceVersion: "4172194"
+  uid: bb0f31cf-0442-437d-b2a8-fa4234bf30d0
+spec:
+  traffic:
+    - configurationName: hello-world
+      latestRevision: true
+      percent: 100
+status:
+  address:
+    url: http://hello-world.demo.svc.cluster.local
+  conditions:
+    - lastTransitionTime: "2022-10-29T08:44:19Z"
+      status: "True"
+      type: AllTrafficAssigned
+    - lastTransitionTime: "2022-10-29T08:44:19Z"
+      message: autoTLS is not enabled
+      reason: TLSNotEnabled
+      status: "True"
+      type: CertificateProvisioned
+    - lastTransitionTime: "2022-10-29T08:44:19Z"
+      status: "True"
+      type: IngressReady
+    - lastTransitionTime: "2022-10-29T08:44:19Z"
+      status: "True"
+      type: Ready
+  observedGeneration: 1
+  traffic:
+    - latestRevision: true
+      percent: 100
+      revisionName: hello-world-00001
+  url: http://hello-world.demo.svc.cluster.local
