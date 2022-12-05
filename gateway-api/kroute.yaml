@@ -1,0 +1,53 @@
+apiVersion: serving.knative.dev/v1
+kind: Route
+metadata:
+  annotations:
+    serving.knative.dev/creator: kubernetes-admin
+    serving.knative.dev/lastModifier: kubernetes-admin
+  creationTimestamp: "2022-11-23T12:24:24Z"
+  finalizers:
+    - routes.serving.knative.dev
+  generation: 1
+  labels:
+    serving.knative.dev/service: helloworld-go
+  name: helloworld-go
+  namespace: test
+  ownerReferences:
+    - apiVersion: serving.knative.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: helloworld-go
+      uid: eafca205-36a7-454e-ac97-4e0a4fd783d8
+  resourceVersion: "4889"
+  uid: 9770cca4-9b31-478c-8690-7cc6b74cf922
+spec:
+  traffic:
+    - configurationName: helloworld-go
+      latestRevision: true
+      percent: 100
+status:
+  address:
+    url: http://helloworld-go.test.svc.cluster.local
+  conditions:
+    - lastTransitionTime: "2022-11-23T12:24:26Z"
+      status: "True"
+      type: AllTrafficAssigned
+    - lastTransitionTime: "2022-11-23T12:24:26Z"
+      message: autoTLS is not enabled
+      reason: TLSNotEnabled
+      status: "True"
+      type: CertificateProvisioned
+    - lastTransitionTime: "2022-11-23T12:24:27Z"
+      status: "True"
+      type: IngressReady
+    - lastTransitionTime: "2022-11-23T12:24:27Z"
+      status: "True"
+      type: Ready
+  observedGeneration: 1
+  traffic:
+    - latestRevision: true
+      percent: 100
+      revisionName: helloworld-go-00001
+  url: http://helloworld-go.test.127.0.0.1.sslip.io
+---

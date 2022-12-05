@@ -1,0 +1,77 @@
+apiVersion: networking.internal.knative.dev/v1alpha1
+kind: Ingress
+metadata:
+  annotations:
+    networking.internal.knative.dev/rollout: '{"configurations":[{"configurationName":"helloworld-go","percent":100,"revisions":[{"revisionName":"helloworld-go-00001","percent":100}],"stepParams":{}}]}'
+    networking.knative.dev/ingress.class: gateway-api.ingress.networking.knative.dev
+    serving.knative.dev/creator: kubernetes-admin
+    serving.knative.dev/lastModifier: kubernetes-admin
+  creationTimestamp: "2022-11-23T12:24:26Z"
+  finalizers:
+    - ingresses.networking.internal.knative.dev
+  generation: 1
+  labels:
+    serving.knative.dev/route: helloworld-go
+    serving.knative.dev/routeNamespace: test
+    serving.knative.dev/service: helloworld-go
+  name: helloworld-go
+  namespace: test
+  ownerReferences:
+    - apiVersion: serving.knative.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Route
+      name: helloworld-go
+      uid: 9770cca4-9b31-478c-8690-7cc6b74cf922
+  resourceVersion: "4887"
+  uid: 6eefaa6d-f622-4e0a-a9aa-4cfde25aff8c
+spec:
+  httpOption: Enabled
+  rules:
+    - hosts:
+        - helloworld-go.test
+        - helloworld-go.test.svc
+        - helloworld-go.test.svc.cluster.local
+      http:
+        paths:
+          - splits:
+              - appendHeaders:
+                  Knative-Serving-Namespace: test
+                  Knative-Serving-Revision: helloworld-go-00001
+                percent: 100
+                serviceName: helloworld-go-00001
+                serviceNamespace: test
+                servicePort: 80
+      visibility: ClusterLocal
+    - hosts:
+        - helloworld-go.test.127.0.0.1.sslip.io
+      http:
+        paths:
+          - splits:
+              - appendHeaders:
+                  Knative-Serving-Namespace: test
+                  Knative-Serving-Revision: helloworld-go-00001
+                percent: 100
+                serviceName: helloworld-go-00001
+                serviceNamespace: test
+                servicePort: 80
+      visibility: ExternalIP
+status:
+  conditions:
+    - lastTransitionTime: "2022-11-23T12:24:27Z"
+      status: "True"
+      type: LoadBalancerReady
+    - lastTransitionTime: "2022-11-23T12:24:26Z"
+      status: "True"
+      type: NetworkConfigured
+    - lastTransitionTime: "2022-11-23T12:24:27Z"
+      status: "True"
+      type: Ready
+  observedGeneration: 1
+  privateLoadBalancer:
+    ingress:
+      - domainInternal: envoy.contour-internal.svc.cluster.local
+  publicLoadBalancer:
+    ingress:
+      - domainInternal: envoy.contour-external.svc.cluster.local
+---

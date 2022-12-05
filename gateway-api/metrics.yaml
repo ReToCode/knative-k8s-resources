@@ -1,0 +1,40 @@
+apiVersion: autoscaling.internal.knative.dev/v1alpha1
+kind: Metric
+metadata:
+  annotations:
+    autoscaling.knative.dev/class: kpa.autoscaling.knative.dev
+    autoscaling.knative.dev/metric: concurrency
+    serving.knative.dev/creator: kubernetes-admin
+  creationTimestamp: "2022-11-23T12:24:25Z"
+  generation: 1
+  labels:
+    app: helloworld-go-00001
+    serving.knative.dev/configuration: helloworld-go
+    serving.knative.dev/configurationGeneration: "1"
+    serving.knative.dev/configurationUID: 696be2d8-d1c8-4ca0-91eb-e049608d6662
+    serving.knative.dev/revision: helloworld-go-00001
+    serving.knative.dev/revisionUID: e5bc03c9-8992-481e-bd0c-effa7a8edfe9
+    serving.knative.dev/service: helloworld-go
+    serving.knative.dev/serviceUID: eafca205-36a7-454e-ac97-4e0a4fd783d8
+  name: helloworld-go-00001
+  namespace: test
+  ownerReferences:
+    - apiVersion: autoscaling.internal.knative.dev/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PodAutoscaler
+      name: helloworld-go-00001
+      uid: a5b362c8-4277-44fe-a156-6ca6ff360d39
+  resourceVersion: "4825"
+  uid: 42333f57-3988-4ccd-8c7a-12975ece6bab
+spec:
+  panicWindow: 6000000000
+  scrapeTarget: helloworld-go-00001-private
+  stableWindow: 60000000000
+status:
+  conditions:
+    - lastTransitionTime: "2022-11-23T12:24:25Z"
+      status: "True"
+      type: Ready
+  observedGeneration: 1
+---

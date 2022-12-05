@@ -1,0 +1,273 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    serving.knative.dev/creator: kubernetes-admin
+  creationTimestamp: "2022-11-23T12:24:25Z"
+  generateName: helloworld-go-00001-deployment-576cb988bf-
+  labels:
+    app: helloworld-go-00001
+    pod-template-hash: 576cb988bf
+    serving.knative.dev/configuration: helloworld-go
+    serving.knative.dev/configurationGeneration: "1"
+    serving.knative.dev/configurationUID: 696be2d8-d1c8-4ca0-91eb-e049608d6662
+    serving.knative.dev/revision: helloworld-go-00001
+    serving.knative.dev/revisionUID: e5bc03c9-8992-481e-bd0c-effa7a8edfe9
+    serving.knative.dev/service: helloworld-go
+    serving.knative.dev/serviceUID: eafca205-36a7-454e-ac97-4e0a4fd783d8
+  name: helloworld-go-00001-deployment-576cb988bf-9kfhq
+  namespace: test
+  ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: helloworld-go-00001-deployment-576cb988bf
+      uid: 8dd25751-67a2-484d-93d9-854b7534a517
+  resourceVersion: "4846"
+  uid: 88a28563-b037-4027-95ef-7a0f144732ae
+spec:
+  containers:
+    - env:
+        - name: TARGET
+          value: Go Sample v1
+        - name: PORT
+          value: "8080"
+        - name: K_REVISION
+          value: helloworld-go-00001
+        - name: K_CONFIGURATION
+          value: helloworld-go
+        - name: K_SERVICE
+          value: helloworld-go
+      image: gcr.io/knative-samples/helloworld-go@sha256:5ea96ba4b872685ff4ddb5cd8d1a97ec18c18fae79ee8df0d29f446c5efe5f50
+      imagePullPolicy: IfNotPresent
+      lifecycle:
+        preStop:
+          httpGet:
+            path: /wait-for-drain
+            port: 8022
+            scheme: HTTP
+      name: user-container
+      ports:
+        - containerPort: 8080
+          name: user-port
+          protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: kube-api-access-rpbhm
+          readOnly: true
+    - env:
+        - name: SERVING_NAMESPACE
+          value: test
+        - name: SERVING_SERVICE
+          value: helloworld-go
+        - name: SERVING_CONFIGURATION
+          value: helloworld-go
+        - name: SERVING_REVISION
+          value: helloworld-go-00001
+        - name: QUEUE_SERVING_PORT
+          value: "8012"
+        - name: QUEUE_SERVING_TLS_PORT
+          value: "8112"
+        - name: CONTAINER_CONCURRENCY
+          value: "0"
+        - name: REVISION_TIMEOUT_SECONDS
+          value: "300"
+        - name: REVISION_RESPONSE_START_TIMEOUT_SECONDS
+          value: "0"
+        - name: REVISION_IDLE_TIMEOUT_SECONDS
+          value: "0"
+        - name: SERVING_POD
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: SERVING_POD_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        - name: SERVING_LOGGING_CONFIG
+        - name: SERVING_LOGGING_LEVEL
+        - name: SERVING_REQUEST_LOG_TEMPLATE
+          value: '{"httpRequest": {"requestMethod": "{{.Request.Method}}", "requestUrl":
+        "{{js .Request.RequestURI}}", "requestSize": "{{.Request.ContentLength}}",
+        "status": {{.Response.Code}}, "responseSize": "{{.Response.Size}}", "userAgent":
+        "{{js .Request.UserAgent}}", "remoteIp": "{{js .Request.RemoteAddr}}", "serverIp":
+        "{{.Revision.PodIP}}", "referer": "{{js .Request.Referer}}", "latency": "{{.Response.Latency}}s",
+        "protocol": "{{.Request.Proto}}"}, "traceId": "{{index .Request.Header "X-B3-Traceid"}}"}'
+        - name: SERVING_ENABLE_REQUEST_LOG
+          value: "false"
+        - name: SERVING_REQUEST_METRICS_BACKEND
+          value: prometheus
+        - name: TRACING_CONFIG_BACKEND
+          value: none
+        - name: TRACING_CONFIG_ZIPKIN_ENDPOINT
+        - name: TRACING_CONFIG_DEBUG
+          value: "false"
+        - name: TRACING_CONFIG_SAMPLE_RATE
+          value: "0.1"
+        - name: USER_PORT
+          value: "8080"
+        - name: SYSTEM_NAMESPACE
+          value: knative-serving
+        - name: METRICS_DOMAIN
+          value: knative.dev/internal/serving
+        - name: SERVING_READINESS_PROBE
+          value: '{"tcpSocket":{"port":8080,"host":"127.0.0.1"},"successThreshold":1}'
+        - name: ENABLE_PROFILING
+          value: "false"
+        - name: SERVING_ENABLE_PROBE_REQUEST_LOG
+          value: "false"
+        - name: METRICS_COLLECTOR_ADDRESS
+        - name: CONCURRENCY_STATE_ENDPOINT
+        - name: CONCURRENCY_STATE_TOKEN_PATH
+          value: /var/run/secrets/tokens/state-token
+        - name: HOST_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+        - name: ENABLE_HTTP2_AUTO_DETECTION
+          value: "false"
+      image: gcr.io/knative-releases/knative.dev/serving/cmd/queue@sha256:505179c0c4892ea4a70e78bc52ac21b03cd7f1a763d2ecc78e7bbaa1ae59c86c
+      imagePullPolicy: IfNotPresent
+      name: queue-proxy
+      ports:
+        - containerPort: 8022
+          name: http-queueadm
+          protocol: TCP
+        - containerPort: 9090
+          name: http-autometric
+          protocol: TCP
+        - containerPort: 9091
+          name: http-usermetric
+          protocol: TCP
+        - containerPort: 8012
+          name: queue-port
+          protocol: TCP
+        - containerPort: 8112
+          name: https-port
+          protocol: TCP
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          httpHeaders:
+            - name: K-Network-Probe
+              value: queue
+          path: /
+          port: 8012
+          scheme: HTTP
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources:
+        requests:
+          cpu: 25m
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: kube-api-access-rpbhm
+          readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  nodeName: knative-gw-api-control-plane
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 300
+  tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+  volumes:
+    - name: kube-api-access-rpbhm
+      projected:
+        defaultMode: 420
+        sources:
+          - serviceAccountToken:
+              expirationSeconds: 3607
+              path: token
+          - configMap:
+              items:
+                - key: ca.crt
+                  path: ca.crt
+              name: kube-root-ca.crt
+          - downwardAPI:
+              items:
+                - fieldRef:
+                    apiVersion: v1
+                    fieldPath: metadata.namespace
+                  path: namespace
+status:
+  conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-11-23T12:24:25Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-11-23T12:24:26Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-11-23T12:24:26Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-11-23T12:24:25Z"
+      status: "True"
+      type: PodScheduled
+  containerStatuses:
+    - containerID: containerd://6619eaa94e5a5fd56d6211b8c4aeba83aa0910cbbb5c1d700bb7d5580bb292c2
+      image: sha256:a5e4ade7c64ee1b70ede641a8dd93bd9100f7eb4bd9ba5fd4d277c8cb86f0f4c
+      imageID: gcr.io/knative-releases/knative.dev/serving/cmd/queue@sha256:505179c0c4892ea4a70e78bc52ac21b03cd7f1a763d2ecc78e7bbaa1ae59c86c
+      lastState: {}
+      name: queue-proxy
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-11-23T12:24:26Z"
+    - containerID: containerd://8834139ff5780d801db898d18dee7cbdb9745e7bf0feb7c47821ef914760928a
+      image: sha256:7de72db4aca729a7cc88116e5f8324942c3da2e54135860b421111c6f9a09540
+      imageID: gcr.io/knative-samples/helloworld-go@sha256:5ea96ba4b872685ff4ddb5cd8d1a97ec18c18fae79ee8df0d29f446c5efe5f50
+      lastState: {}
+      name: user-container
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-11-23T12:24:26Z"
+  hostIP: 172.18.0.2
+  phase: Running
+  podIP: 10.244.0.25
+  podIPs:
+    - ip: 10.244.0.25
+  qosClass: Burstable
+  startTime: "2022-11-23T12:24:25Z"
+---

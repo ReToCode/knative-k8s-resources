@@ -1,0 +1,51 @@
+apiVersion: serving.knative.dev/v1
+kind: Configuration
+metadata:
+  annotations:
+    serving.knative.dev/creator: kubernetes-admin
+    serving.knative.dev/lastModifier: kubernetes-admin
+    serving.knative.dev/routes: helloworld-go
+  creationTimestamp: "2022-11-23T12:24:24Z"
+  generation: 1
+  labels:
+    serving.knative.dev/service: helloworld-go
+    serving.knative.dev/serviceUID: eafca205-36a7-454e-ac97-4e0a4fd783d8
+  name: helloworld-go
+  namespace: test
+  ownerReferences:
+    - apiVersion: serving.knative.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: helloworld-go
+      uid: eafca205-36a7-454e-ac97-4e0a4fd783d8
+  resourceVersion: "4860"
+  uid: 696be2d8-d1c8-4ca0-91eb-e049608d6662
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containerConcurrency: 0
+      containers:
+        - env:
+            - name: TARGET
+              value: Go Sample v1
+          image: gcr.io/knative-samples/helloworld-go
+          name: user-container
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 0
+          resources: {}
+      enableServiceLinks: false
+      timeoutSeconds: 300
+status:
+  conditions:
+    - lastTransitionTime: "2022-11-23T12:24:26Z"
+      status: "True"
+      type: Ready
+  latestCreatedRevisionName: helloworld-go-00001
+  latestReadyRevisionName: helloworld-go-00001
+  observedGeneration: 1
+---

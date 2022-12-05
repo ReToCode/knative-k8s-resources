@@ -1,0 +1,197 @@
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  annotations:
+    networking.internal.knative.dev/rollout: '{"configurations":[{"configurationName":"helloworld-go","percent":100,"revisions":[{"revisionName":"helloworld-go-00001","percent":100}],"stepParams":{}}]}'
+    networking.knative.dev/ingress.class: gateway-api.ingress.networking.knative.dev
+    serving.knative.dev/creator: kubernetes-admin
+    serving.knative.dev/lastModifier: kubernetes-admin
+  creationTimestamp: "2022-11-23T12:24:26Z"
+  generation: 1
+  labels:
+    networking.knative.dev/visibility: ""
+    serving.knative.dev/route: helloworld-go
+    serving.knative.dev/routeNamespace: test
+    serving.knative.dev/service: helloworld-go
+  name: helloworld-go.test.127.0.0.1.sslip.io
+  namespace: test
+  ownerReferences:
+    - apiVersion: networking.internal.knative.dev/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Ingress
+      name: helloworld-go
+      uid: 6eefaa6d-f622-4e0a-a9aa-4cfde25aff8c
+  resourceVersion: "4884"
+  uid: c3575405-70ef-4c0c-978e-d5a7f5bf1674
+spec:
+  hostnames:
+    - helloworld-go.test.127.0.0.1.sslip.io
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: knative-gateway
+      namespace: contour-external
+  rules:
+    - backendRefs:
+        - filters:
+            - requestHeaderModifier:
+                set:
+                  - name: Knative-Serving-Revision
+                    value: helloworld-go-00001
+                  - name: Knative-Serving-Namespace
+                    value: test
+              type: RequestHeaderModifier
+          group: ""
+          kind: Service
+          name: helloworld-go-00001
+          port: 80
+          weight: 100
+      filters:
+        - requestHeaderModifier:
+            set:
+              - name: K-Network-Hash
+                value: 77b37bd5237cb826faaabf772d340a132e653c2c3566ca2d7a0fa9e598a15f6e
+          type: RequestHeaderModifier
+      matches:
+        - headers:
+            - name: K-Network-Hash
+              type: Exact
+              value: override
+          path:
+            type: PathPrefix
+            value: /
+    - backendRefs:
+        - filters:
+            - requestHeaderModifier:
+                set:
+                  - name: Knative-Serving-Revision
+                    value: helloworld-go-00001
+                  - name: Knative-Serving-Namespace
+                    value: test
+              type: RequestHeaderModifier
+          group: ""
+          kind: Service
+          name: helloworld-go-00001
+          port: 80
+          weight: 100
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+status:
+  parents:
+    - conditions:
+        - lastTransitionTime: "2022-11-23T12:24:27Z"
+          message: Accepted HTTPRoute
+          observedGeneration: 1
+          reason: Accepted
+          status: "True"
+          type: Accepted
+      controllerName: projectcontour.io/contour-external/contour
+      parentRef:
+        group: gateway.networking.k8s.io
+        kind: Gateway
+        name: knative-gateway
+        namespace: contour-external
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  annotations:
+    networking.internal.knative.dev/rollout: '{"configurations":[{"configurationName":"helloworld-go","percent":100,"revisions":[{"revisionName":"helloworld-go-00001","percent":100}],"stepParams":{}}]}'
+    networking.knative.dev/ingress.class: gateway-api.ingress.networking.knative.dev
+    serving.knative.dev/creator: kubernetes-admin
+    serving.knative.dev/lastModifier: kubernetes-admin
+  creationTimestamp: "2022-11-23T12:24:26Z"
+  generation: 1
+  labels:
+    networking.knative.dev/visibility: cluster-local
+    serving.knative.dev/route: helloworld-go
+    serving.knative.dev/routeNamespace: test
+    serving.knative.dev/service: helloworld-go
+  name: helloworld-go.test.svc.cluster.local
+  namespace: test
+  ownerReferences:
+    - apiVersion: networking.internal.knative.dev/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Ingress
+      name: helloworld-go
+      uid: 6eefaa6d-f622-4e0a-a9aa-4cfde25aff8c
+  resourceVersion: "4874"
+  uid: 8c8d739a-2f22-44c7-b1c3-bd576cf8ef54
+spec:
+  hostnames:
+    - helloworld-go.test
+    - helloworld-go.test.svc
+    - helloworld-go.test.svc.cluster.local
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: knative-local-gateway
+      namespace: contour-internal
+  rules:
+    - backendRefs:
+        - filters:
+            - requestHeaderModifier:
+                set:
+                  - name: Knative-Serving-Revision
+                    value: helloworld-go-00001
+                  - name: Knative-Serving-Namespace
+                    value: test
+              type: RequestHeaderModifier
+          group: ""
+          kind: Service
+          name: helloworld-go-00001
+          port: 80
+          weight: 100
+      filters:
+        - requestHeaderModifier:
+            set:
+              - name: K-Network-Hash
+                value: 77b37bd5237cb826faaabf772d340a132e653c2c3566ca2d7a0fa9e598a15f6e
+          type: RequestHeaderModifier
+      matches:
+        - headers:
+            - name: K-Network-Hash
+              type: Exact
+              value: override
+          path:
+            type: PathPrefix
+            value: /
+    - backendRefs:
+        - filters:
+            - requestHeaderModifier:
+                set:
+                  - name: Knative-Serving-Revision
+                    value: helloworld-go-00001
+                  - name: Knative-Serving-Namespace
+                    value: test
+              type: RequestHeaderModifier
+          group: ""
+          kind: Service
+          name: helloworld-go-00001
+          port: 80
+          weight: 100
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+status:
+  parents:
+    - conditions:
+        - lastTransitionTime: "2022-11-23T12:24:26Z"
+          message: Accepted HTTPRoute
+          observedGeneration: 1
+          reason: Accepted
+          status: "True"
+          type: Accepted
+      controllerName: projectcontour.io/contour-internal/contour
+      parentRef:
+        group: gateway.networking.k8s.io
+        kind: Gateway
+        name: knative-local-gateway
+        namespace: contour-internal
+---
